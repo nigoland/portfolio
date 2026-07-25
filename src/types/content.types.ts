@@ -156,6 +156,8 @@ export interface About extends BasePageConfig {
       timeframe: string;
       /** Role or job title */
       role: string;
+      /** One-line company description, shown above achievements, not as a bullet */
+      description?: React.ReactNode;
       /** Achievements at the company */
       achievements: React.ReactNode[];
       /** Images related to the experience */

@@ -1,0 +1,65 @@
+---
+title: "Rebuilding the Operator Platform Into One Institution-Ready System"
+publishedAt: "2026-05-01"
+summary: "Rebuilt Hydra X's fragmented back office into one unified, institution-ready operator platform across 4 exchange models, cutting onboarding time by over 50%."
+timeframe: "Aug 2025 - May 2026"
+teamSize: "3 PM · 10 eng · 4 QA · 3 squads"
+scope: "4 exchange models"
+images:
+  - "/images/projects/operator-platform-market-setup/platform-scope.jpg"
+  - "/images/projects/operator-platform-market-setup/team-scope.jpg"
+  - "/images/projects/operator-platform-market-setup/before-after.jpg"
+team:
+  - name: "Dedi Nigolan"
+    role: "Lead Product Designer / PM / Project Lead"
+    avatar: "/images/avatar.jpg"
+    linkedIn: "https://linkedin.com/in/dedinigolan"
+---
+
+Hydra X sells exchange infrastructure to banks, brokers, and fintechs who want to run their own regulated trading venue without building it themselves. The operator platform is the back office they log into every day to run it. I rebuilt it end to end into one unified, institution-ready system.
+
+<SpecList>
+  <SpecItem label="Client" value="Banks, brokers, fintechs running a regulated exchange" />
+  <SpecItem label="Deployment" value="On-premise or cloud-hosted" />
+  <SpecItem label="My role" value="Designer, PM, and project lead, end to end" />
+</SpecList>
+
+<Eyebrow>01 — Diagnosis</Eyebrow>
+
+## The Problem
+
+Every part of the operator platform had the same root problem. The clearest case: market setup.
+
+<Chain>
+  <ChainItem label="Symptom" variant="danger">Sales struggled to pitch it. Customers complained. "Bug" tickets piled up.</ChainItem>
+  <ChainItem label="Root cause" variant="neutral">The UI mirrored backend service boundaries instead of the operator's task. Creating a market meant 5 separate pages, one of which literally exposed raw backend URLs (Matching Engine, Risk Engine, Fees App).</ChainItem>
+  <ChainItem label="Fix" variant="brand">Redesigned around the operator's task, not the backend's architecture. One menu, one guided flow.</ChainItem>
+</Chain>
+
+That's expensive in a business selling to regulated institutions, where ease of use and trust are part of what you're selling, not a polish problem.
+
+<Eyebrow>02 — Approach</Eyebrow>
+
+## What I Did
+
+I owned solutioning and design end to end as designer, PM, and project lead, working with business stakeholders across the full rebuild.
+
+![Dedi Nigolan led this as designer, PM, and project lead, managing 3 PMs, 10 engineers, and 4 QA across 3 product squads.](/images/projects/operator-platform-market-setup/team-scope.jpg)
+
+The principle was the same everywhere: organize the interface around the operator's task, not the backend's architecture. Every function on the platform got the same treatment, one coherent flow instead of a set of pages that happened to match how the engineering team had split their services.
+
+**Market setup, the flagship example:** 5 scattered pages became a single 4-step wizard under one "Markets" menu. The raw technical URL fields disappeared from the operator-facing flow entirely.
+
+![Before: 5 disconnected pages mirroring backend services. After: one guided 4-step wizard.](/images/projects/operator-platform-market-setup/before-after.jpg)
+
+<Eyebrow>03 — Outcome</Eyebrow>
+
+## The Result
+
+<StatRow>
+  <Stat value="4" label="Exchange models unified" />
+  <Stat value="50%+" label="Faster onboarding" />
+  <Stat value="17" label="People led (PM, eng, QA)" />
+</StatRow>
+
+User testing confirmed the cut in onboarding time, with a lower risk of operator error. Business stakeholders, the same teams who'd been fielding the complaints, gave direct positive feedback once it shipped. The platform could finally match what Hydra X was actually selling: institution-grade infrastructure that was also straightforward to run.

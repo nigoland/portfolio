@@ -4,7 +4,6 @@ import { slugify as transliterate } from "transliteration";
 
 import {
   Heading,
-  HeadingLink,
   Text,
   InlineCode,
   CodeBlock,
@@ -26,6 +25,7 @@ import {
   ListItem,
   Line,
 } from "@once-ui-system/core";
+import { Eyebrow, Lede, SpecList, SpecItem, Chain, ChainItem, StatRow, Stat } from "@/components/work/CaseStudy";
 
 type CustomLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement> & {
   href: string;
@@ -67,10 +67,10 @@ function createImage({ alt, src, ...props }: MediaProps & { src: string }) {
       marginTop="8"
       marginBottom="16"
       enlarge
-      radius="m"
-      border="neutral-alpha-medium"
+      radius="l"
       sizes="(max-width: 960px) 100vw, 960px"
       alt={alt}
+      caption={alt}
       src={src}
       {...props}
     />
@@ -85,16 +85,32 @@ function slugify(str: string): string {
   }).replace(/\-\-+/g, "-"); // Replace multiple - with single -
 }
 
+const headingVariantMap = {
+  h1: "display-strong-xs",
+  h2: "heading-strong-xl",
+  h3: "heading-strong-l",
+  h4: "heading-strong-m",
+  h5: "heading-strong-s",
+  h6: "heading-strong-xs",
+} as const;
+
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   const CustomHeading = ({
     children,
     ...props
-  }: Omit<React.ComponentProps<typeof HeadingLink>, "as" | "id">) => {
+  }: Omit<React.ComponentProps<typeof Heading>, "as" | "id" | "variant">) => {
     const slug = slugify(children as string);
     return (
-      <HeadingLink marginTop="24" marginBottom="12" as={as} id={slug} {...props}>
+      <Heading
+        marginTop="24"
+        marginBottom="12"
+        as={as}
+        id={slug}
+        variant={headingVariantMap[as]}
+        {...props}
+      >
         {children}
-      </HeadingLink>
+      </Heading>
     );
   };
 
@@ -202,6 +218,14 @@ const components = {
   Icon,
   Media,
   SmartLink,
+  Eyebrow,
+  Lede,
+  SpecList,
+  SpecItem,
+  Chain,
+  ChainItem,
+  StatRow,
+  Stat,
 };
 
 type CustomMDXProps = MDXRemoteProps & {

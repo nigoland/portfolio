@@ -67,3 +67,238 @@
   --scheme-neutral-600-50: rgba(137,152,159,0.5);
   /*
 }*/
+
+/* ============================================================
+   Case study editorial system
+   Hairline dividers + mono micro-labels + causal-chain layout,
+   replacing generic bordered Card grids.
+   ============================================================ */
+
+.cs-lede {
+  font-size: 1.125rem;
+  line-height: 1.65;
+  font-weight: 400;
+  color: var(--neutral-on-background-strong);
+  margin: var(--static-space-4) 0 0;
+}
+
+@media (min-width: 768px) {
+  .cs-lede {
+    font-size: 1.3125rem;
+  }
+}
+
+.cs-eyebrow {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+  border-top: 1px solid var(--neutral-border-weak);
+  margin-top: var(--static-space-64);
+  padding-top: var(--static-space-32);
+  margin-bottom: var(--static-space-4);
+}
+
+.cs-spec-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--static-space-20) var(--static-space-32);
+  margin-top: var(--static-space-24);
+  padding-top: var(--static-space-20);
+  padding-bottom: var(--static-space-4);
+  border-top: 1px solid var(--neutral-border-weak);
+}
+
+.cs-spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: var(--static-space-4);
+}
+
+.cs-spec-label {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+.cs-spec-value {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--neutral-on-background-strong);
+}
+
+.cs-chain {
+  display: flex;
+  flex-direction: column;
+  margin: var(--static-space-24) 0;
+}
+
+.cs-chain-item {
+  position: relative;
+  padding-left: var(--static-space-24);
+  padding-bottom: var(--static-space-24);
+  border-left: 2px solid var(--neutral-border-weak);
+}
+
+.cs-chain-item:last-child {
+  border-left-color: transparent;
+  padding-bottom: 0;
+}
+
+.cs-chain-item::before {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--neutral-solid-strong);
+}
+
+.cs-chain-item--danger {
+  border-left-color: var(--danger-on-background-weak);
+}
+.cs-chain-item--danger::before {
+  background: var(--danger-on-background-weak);
+}
+.cs-chain-item--danger:last-child {
+  border-left-color: transparent;
+}
+
+.cs-chain-item--brand {
+  border-left-color: var(--brand-on-background-weak);
+}
+.cs-chain-item--brand::before {
+  background: var(--brand-on-background-weak);
+}
+.cs-chain-item--brand:last-child {
+  border-left-color: transparent;
+}
+
+.cs-chain-label {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: var(--static-space-4);
+  color: var(--neutral-on-background-weak);
+}
+
+.cs-chain-item--danger .cs-chain-label {
+  color: var(--danger-on-background-weak);
+}
+.cs-chain-item--brand .cs-chain-label {
+  color: var(--brand-on-background-weak);
+}
+
+.cs-chain-text {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--neutral-on-background-strong);
+  margin: 0;
+}
+
+.cs-stat-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: var(--static-space-32) 0;
+}
+
+.cs-stat {
+  flex: 1 1 140px;
+  padding: 0 var(--static-space-32);
+}
+
+.cs-stat:first-child {
+  padding-left: 0;
+}
+.cs-stat:last-child {
+  padding-right: 0;
+}
+
+.cs-stat + .cs-stat {
+  border-left: 1px solid var(--neutral-border-weak);
+}
+
+.cs-stat-number {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--brand-on-background-weak);
+  font-variant-numeric: tabular-nums;
+}
+
+.cs-stat-label {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  color: var(--neutral-on-background-weak);
+  margin-top: var(--static-space-8);
+  line-height: 1.4;
+}
+
+.cs-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--static-space-32);
+  padding: var(--static-space-20) 0;
+  border-top: 1px solid var(--neutral-border-weak);
+  border-bottom: 1px solid var(--neutral-border-weak);
+}
+
+.cs-meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--static-space-4);
+}
+
+.cs-meta-label {
+  font-family: var(--font-code);
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--neutral-on-background-weak);
+}
+
+.cs-meta-value {
+  font-size: 0.875rem;
+  color: var(--neutral-on-background-strong);
+  text-align: center;
+}
+
+.cs-header-meta {
+  font-family: var(--font-code);
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+  color: var(--neutral-on-background-weak);
+}
+
+.cs-article figcaption {
+  font-family: var(--font-code) !important;
+  font-size: 0.8125rem !important;
+  text-align: left !important;
+  justify-content: flex-start !important;
+}
+
+/* Every SmartLink (project links, back-links, footer credit) shares this
+   reset class — one rule gives every text link a consistent accent hover
+   sitewide instead of leaving links colorless. */
+.reset-button-styles:hover,
+.reset-button-styles:focus-visible {
+  color: var(--brand-on-background-weak);
+  text-decoration-line: underline;
+  text-underline-offset: 0.25em;
+}
+
+/* Active nav item in the header pill */
+.cs-nav-active {
+  color: var(--brand-on-background-weak) !important;
+}

@@ -44,6 +44,11 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const isHome = pathname === "/";
+  const isAbout = pathname === "/about";
+  const isWork = pathname.startsWith("/work");
+  const isBlog = pathname.startsWith("/blog");
+  const isGallery = pathname.startsWith("/gallery");
 
   return (
     <>
@@ -72,8 +77,12 @@ export const Header = () => {
           position: "fixed",
         }}
       >
-        <Row paddingLeft="12" fillWidth vertical="center" textVariant="body-default-s">
-          {display.location && <Row s={{ hide: true }}>{person.location}</Row>}
+        <Row paddingLeft="12" fillWidth vertical="center">
+          {display.location && (
+            <Row className="cs-header-meta" s={{ hide: true }}>
+              {person.location}
+            </Row>
+          )}
         </Row>
         <Row fillWidth horizontal="center">
           <Row
@@ -87,7 +96,12 @@ export const Header = () => {
           >
             <Row gap="4" vertical="center" textVariant="body-default-s" suppressHydrationWarning>
               {routes["/"] && (
-                <ToggleButton prefixIcon="home" href="/" selected={pathname === "/"} />
+                <ToggleButton
+                  prefixIcon="home"
+                  href="/"
+                  selected={isHome}
+                  className={isHome ? "cs-nav-active" : undefined}
+                />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
               {routes["/about"] && (
@@ -97,14 +111,16 @@ export const Header = () => {
                       prefixIcon="person"
                       href="/about"
                       label={about.label}
-                      selected={pathname === "/about"}
+                      selected={isAbout}
+                      className={isAbout ? "cs-nav-active" : undefined}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="person"
                       href="/about"
-                      selected={pathname === "/about"}
+                      selected={isAbout}
+                      className={isAbout ? "cs-nav-active" : undefined}
                     />
                   </Row>
                 </>
@@ -116,14 +132,16 @@ export const Header = () => {
                       prefixIcon="grid"
                       href="/work"
                       label={work.label}
-                      selected={pathname.startsWith("/work")}
+                      selected={isWork}
+                      className={isWork ? "cs-nav-active" : undefined}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="grid"
                       href="/work"
-                      selected={pathname.startsWith("/work")}
+                      selected={isWork}
+                      className={isWork ? "cs-nav-active" : undefined}
                     />
                   </Row>
                 </>
@@ -135,14 +153,16 @@ export const Header = () => {
                       prefixIcon="book"
                       href="/blog"
                       label={blog.label}
-                      selected={pathname.startsWith("/blog")}
+                      selected={isBlog}
+                      className={isBlog ? "cs-nav-active" : undefined}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="book"
                       href="/blog"
-                      selected={pathname.startsWith("/blog")}
+                      selected={isBlog}
+                      className={isBlog ? "cs-nav-active" : undefined}
                     />
                   </Row>
                 </>
@@ -154,14 +174,16 @@ export const Header = () => {
                       prefixIcon="gallery"
                       href="/gallery"
                       label={gallery.label}
-                      selected={pathname.startsWith("/gallery")}
+                      selected={isGallery}
+                      className={isGallery ? "cs-nav-active" : undefined}
                     />
                   </Row>
                   <Row hide s={{ hide: false }}>
                     <ToggleButton
                       prefixIcon="gallery"
                       href="/gallery"
-                      selected={pathname.startsWith("/gallery")}
+                      selected={isGallery}
+                      className={isGallery ? "cs-nav-active" : undefined}
                     />
                   </Row>
                 </>
@@ -176,14 +198,8 @@ export const Header = () => {
           </Row>
         </Row>
         <Flex fillWidth horizontal="end" vertical="center">
-          <Flex
-            paddingRight="12"
-            horizontal="end"
-            vertical="center"
-            textVariant="body-default-s"
-            gap="20"
-          >
-            <Flex s={{ hide: true }}>
+          <Flex paddingRight="12" horizontal="end" vertical="center" gap="20">
+            <Flex className="cs-header-meta" s={{ hide: true }}>
               {display.time && <TimeDisplay timeZone={person.location} />}
             </Flex>
           </Flex>

@@ -65,18 +65,6 @@ export default function About() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      {about.tableOfContent.display && (
-        <Column
-          left="0"
-          style={{ top: "50%", transform: "translateY(-50%)" }}
-          position="fixed"
-          paddingLeft="24"
-          gap="32"
-          s={{ hide: true }}
-        >
-          <TableOfContents structure={structure} about={about} />
-        </Column>
-      )}
       <Row fillWidth s={{ direction: "column"}} horizontal="center">
         {about.avatar.display && (
           <Column
@@ -95,7 +83,7 @@ export default function About() {
           >
             <Avatar src={person.avatar} size="xl" />
             <Row gap="8" vertical="center">
-              <Icon onBackground="accent-weak" name="globe" />
+              <Icon onBackground="neutral-weak" name="globe" />
               {person.location}
             </Row>
             {person.languages && person.languages.length > 0 && (
@@ -107,6 +95,7 @@ export default function About() {
                 ))}
               </Row>
             )}
+            <TableOfContents structure={structure} about={about} />
           </Column>
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
@@ -142,7 +131,7 @@ export default function About() {
                 />
               </Row>
             )}
-            <Heading className={styles.textAlign} variant="display-strong-xl">
+            <Heading className={styles.textAlign} variant="display-strong-l">
               {person.name}
             </Heading>
             <Text
@@ -218,9 +207,19 @@ export default function About() {
                         {experience.timeframe}
                       </Text>
                     </Row>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
+                    <Text variant="body-default-s" onBackground="neutral-strong" marginBottom="4">
                       {experience.role}
                     </Text>
+                    {experience.description && (
+                      <Text
+                        variant="body-default-s"
+                        onBackground="neutral-weak"
+                        marginBottom="m"
+                        style={{ fontStyle: "italic" }}
+                      >
+                        {experience.description}
+                      </Text>
+                    )}
                     <Column as="ul" gap="16">
                       {experience.achievements.map(
                         (achievement: React.ReactNode, index: number) => (

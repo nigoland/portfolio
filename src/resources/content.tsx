@@ -1,20 +1,20 @@
 import { About, Blog, Gallery, Home, Newsletter, Person, Social, Work } from "@/types";
-import { Line, Row, Text } from "@once-ui-system/core";
+import { Text } from "@once-ui-system/core";
 
 const person: Person = {
-  firstName: "Selene",
-  lastName: "Yu",
-  name: `Selene Yu`,
-  role: "Design Engineer",
-  avatar: "/images/avatar.jpg",
-  email: "example@gmail.com",
-  location: "Asia/Jakarta", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
-  languages: ["English", "Bahasa"], // optional: Leave the array empty if you don't want to display languages
+  firstName: "Dedi",
+  lastName: "Nigolan",
+  name: `Dedi Nigolan`,
+  role: "Product Design Lead",
+  avatar: "/images/avatar.jpg", // TODO: replace with a real photo, see note below
+  email: "dedinigolan@gmail.com",
+  location: "Asia/Singapore", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  languages: ["English", "Bahasa Indonesia"], // optional: Leave the array empty if you don't want to display languages
   locale: "en", // BCP 47 language tag for the HTML lang attribute, e.g., 'en', 'ja', 'zh-TW'
 };
 
 const newsletter: Newsletter = {
-  display: true,
+  display: false,
   title: <>Subscribe to {person.firstName}'s Newsletter</>,
   description: <>My weekly newsletter about creativity and engineering</>,
 };
@@ -24,27 +24,9 @@ const social: Social = [
   // Import new icons in /once-ui/icons.ts
   // Set essentials: true for links you want to show on the about page
   {
-    name: "GitHub",
-    icon: "github",
-    link: "https://github.com/once-ui-system",
-    essential: true,
-  },
-  {
     name: "LinkedIn",
     icon: "linkedin",
-    link: "https://www.linkedin.com/company/once-ui/",
-    essential: true,
-  },
-  {
-    name: "Instagram",
-    icon: "instagram",
-    link: "https://www.instagram.com/once_ui/",
-    essential: false,
-  },
-  {
-    name: "Threads",
-    icon: "threads",
-    link: "https://www.threads.com/@once_ui",
+    link: "https://linkedin.com/in/dedinigolan",
     essential: true,
   },
   {
@@ -57,28 +39,20 @@ const social: Social = [
 
 const home: Home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/images/avatar.jpg", // fallback only, actual OG image is generated dynamically in layout.tsx/page.tsx
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Turning complex exchange infrastructure into systems people can actually use</>,
   featured: {
     display: true,
-    title: (
-      <Row gap="12" vertical="center">
-        <strong className="ml-4">Once UI</strong>{" "}
-        <Line background="brand-alpha-strong" vert height="20" />
-        <Text marginRight="4" onBackground="brand-medium">
-          Featured work
-        </Text>
-      </Row>
-    ),
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: "Featured work",
+    href: "/work/exchange-solutions-design-system",
   },
   subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} at{" "}
-      <Text as="span" size="xl" weight="strong">ONCE UI</Text>, where I craft intuitive <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName}, a {person.role.toLowerCase()} building institutional exchange platforms at{" "}
+      <Text as="span" size="xl" weight="strong">Hydra X</Text> in Singapore.
     </>
   ),
 };
@@ -87,7 +61,7 @@ const about: About = {
   path: "/about",
   label: "About",
   title: `About – ${person.name}`,
-  description: `Meet ${person.name}, ${person.role} from ${person.location}`,
+  description: `Meet ${person.name}, ${person.role} from Singapore`,
   tableOfContent: {
     display: true,
     subItems: false,
@@ -96,17 +70,19 @@ const about: About = {
     display: true,
   },
   calendar: {
-    display: true,
-    link: "https://cal.com",
+    display: false,
+    link: "",
   },
   intro: {
     display: true,
     title: "Introduction",
     description: (
       <>
-        {person.firstName} is a {person.location.split("/")[1]?.replace("_", " ")}-based {person.role.toLowerCase()} with a passion for transforming complex challenges
-        into simple, elegant design solutions. Their work spans digital interfaces, interactive
-        experiences, and the convergence of design and technology.
+        Dedi is a Singapore-based product design lead with a background spanning UI/UX, marketing, and
+        product ownership in financial technology, most recently rebuilding institutional exchange
+        infrastructure end to end. Known for systems-level thinking, connecting complex, interdependent
+        pieces of a product into a coherent, human-usable whole, paired with strong design judgment
+        grounded in feel: proportion, flow, hierarchy, tone.
       </>
     ),
   },
@@ -115,41 +91,71 @@ const about: About = {
     title: "Work Experience",
     experiences: [
       {
-        company: "FLY",
-        timeframe: "2022 - Present",
-        role: "Senior Design Engineer",
+        company: "Hydra X",
+        timeframe: "Feb 2023 - Present",
+        role: "Design Lead",
+        description: (
+          <>
+            Exchange platform for banks and financial institutions, handling trading, custody, and
+            digital asset issuance.
+          </>
+        ),
         achievements: [
           <>
-            Redesigned the UI/UX for the FLY platform, resulting in a 20% increase in user
-            engagement and 30% faster load times.
+            Built a design team of 5 (designers and product managers) from scratch. Now leads 3 product
+            squads, ~15 people total.
           </>,
           <>
-            Spearheaded the integration of AI tools into design workflows, enabling designers to
-            iterate 50% faster.
+            Built the team's structure and career-growth framework, mentoring members regularly.
+          </>,
+          <>
+            Rebuilt the design system in 1 month, then rolled it out across 4 products at ~6 weeks each,
+            cutting UI bugs and speeding up delivery across design and engineering.
+          </>,
+          <>
+            Built an AI design pipeline that turns PRDs into Figma prototypes, doubling designer output.
+            Cut one feature's build time from 12 weeks to 6 weeks using it.
+          </>,
+          <>
+            Introduced design sprints and metric-based user testing as standard process, cutting decision
+            time in half.
+          </>,
+          <>
+            Led design across the full B2B exchange suite, custody wallets, settlement, and tokenisation
+            under one consistent experience, so operators learned the system once instead of relearning it
+            per product.
           </>,
         ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        images: [],
       },
       {
-        company: "Creativ3",
-        timeframe: "2018 - 2022",
-        role: "Lead Designer",
+        company: "TDI APJ",
+        timeframe: "Jun 2022 - Dec 2022",
+        role: "Regional Marketing Manager",
+        description: <>Enterprise SAP/ERP implementation provider serving Southeast Asia.</>,
         achievements: [
           <>
-            Developed a design system that unified the brand across multiple platforms, improving
-            design consistency by 40%.
+            Solo-led the brand and marketing relaunch across Singapore, Malaysia, and Vietnam
+            post-acquisition: rebrand, website, messaging, collateral, partnerships.
           </>,
           <>
-            Led a cross-functional team to launch a new product line, contributing to a 15% increase
-            in overall company revenue.
+            Ran an event every 6 weeks, positioning the company as a thought leader in the space.
+          </>,
+        ],
+        images: [],
+      },
+      {
+        company: "Hydra X",
+        timeframe: "Mar 2019 - May 2022",
+        role: "UI/UX Designer / Marketing",
+        achievements: [
+          <>
+            Moved from marketing into product design as the business pivoted to B2B, designing 0-to-1
+            interfaces that helped land first institutional clients.
+          </>,
+          <>
+            Built the company's first design system from scratch, standardising visual language as the
+            product grew.
           </>,
         ],
         images: [],
@@ -161,12 +167,16 @@ const about: About = {
     title: "Studies",
     institutions: [
       {
-        name: "University of Jakarta",
-        description: <>Studied software engineering.</>,
+        name: "Singapore Management University",
+        description: <>MSc, Business Management, Dean's List Honours (2017-2018)</>,
       },
       {
-        name: "Build the Future",
-        description: <>Studied online marketing and personal branding.</>,
+        name: "University of Northumbria at Newcastle",
+        description: <>BA, Advertising, First Class Honours (2014-2015)</>,
+      },
+      {
+        name: "Nanyang Academy of Fine Arts",
+        description: <>Diploma, Advertising, Design & Media (2012-2014)</>,
       },
     ],
   },
@@ -175,60 +185,35 @@ const about: About = {
     title: "Technical skills",
     skills: [
       {
-        title: "Figma",
-        description: (
-          <>Able to prototype in Figma with Once UI with unnatural speed.</>
-        ),
-        tags: [
-          {
-            name: "Figma",
-            icon: "figma",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Design systems",
+        description: <>Build, scale, and own design systems, from Figma tokens to Storybook documentation.</>,
       },
       {
-        title: "Next.js",
+        title: "AI-assisted prototyping",
         description: (
-          <>Building next gen apps with Next.js + Once UI + Supabase.</>
+          <>Built an AI design pipeline (Claude Code) that turns PRDs directly into Figma prototypes.</>
         ),
-        tags: [
-          {
-            name: "JavaScript",
-            icon: "javascript",
-          },
-          {
-            name: "Next.js",
-            icon: "nextjs",
-          },
-          {
-            name: "Supabase",
-            icon: "supabase",
-          },
-        ],
-        // optional: leave the array empty if you don't want to display images
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Project image",
-            width: 16,
-            height: 9,
-          },
-        ],
+      },
+      {
+        title: "Cross-functional leadership",
+        description: (
+          <>Partners directly with Product, Engineering, and Business to turn requirements into roadmaps and shipped product.</>
+        ),
+        images: [],
+      },
+      {
+        title: "Team building & mentoring",
+        description: (
+          <>Built a design team of 5 from scratch and its career-growth framework, mentoring members regularly.</>
+        ),
+        images: [],
+      },
+      {
+        title: "0-to-1 product design",
+        description: (
+          <>Designed 0-to-1 interfaces for a multi-asset exchange platform from the ground up.</>
+        ),
+        images: [],
       },
     ],
   },
@@ -247,8 +232,8 @@ const work: Work = {
   path: "/work",
   label: "Work",
   title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  description: `Design and product case studies by ${person.name}`,
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
@@ -257,50 +242,7 @@ const gallery: Gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
-  images: [
-    {
-      src: "/images/gallery/horizontal-1.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-4.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-3.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-1.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/vertical-2.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-    {
-      src: "/images/gallery/horizontal-2.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/horizontal-4.jpg",
-      alt: "image",
-      orientation: "horizontal",
-    },
-    {
-      src: "/images/gallery/vertical-3.jpg",
-      alt: "image",
-      orientation: "vertical",
-    },
-  ],
+  images: [],
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery };

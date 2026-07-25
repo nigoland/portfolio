@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Column, Flex, Text } from "@once-ui-system/core";
+import { Column, Flex } from "@once-ui-system/core";
 import styles from "./about.module.scss";
 
 interface TableOfContentsProps {
@@ -35,22 +35,11 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
   if (!about.tableOfContent.display) return null;
 
   return (
-    <Column
-      left="0"
-      style={{
-        top: "50%",
-        transform: "translateY(-50%)",
-        whiteSpace: "nowrap",
-      }}
-      position="fixed"
-      paddingLeft="24"
-      gap="32"
-      m={{ hide: true }}
-    >
+    <Column gap="12" fillWidth paddingTop="m" style={{ borderTop: "1px solid var(--neutral-border-weak)" }}>
       {structure
         .filter((section) => section.display)
         .map((section, sectionIndex) => (
-          <Column key={sectionIndex} gap="12">
+          <Column key={sectionIndex} gap="8">
             <Flex
               cursor="interactive"
               className={styles.hover}
@@ -58,28 +47,9 @@ const TableOfContents: React.FC<TableOfContentsProps> = ({ structure, about }) =
               vertical="center"
               onClick={() => scrollTo(section.title, 80)}
             >
-              <Flex height="1" minWidth="16" background="neutral-strong"></Flex>
-              <Text>{section.title}</Text>
+              <Flex height="1" minWidth="12" background="neutral-strong" />
+              <span className="cs-header-meta">{section.title}</span>
             </Flex>
-            {about.tableOfContent.subItems && (
-              <>
-                {section.items.map((item, itemIndex) => (
-                  <Flex
-                    l={{ hide: true }}
-                    key={itemIndex}
-                    style={{ cursor: "pointer" }}
-                    className={styles.hover}
-                    gap="12"
-                    paddingLeft="24"
-                    vertical="center"
-                    onClick={() => scrollTo(item, 80)}
-                  >
-                    <Flex height="1" minWidth="8" background="neutral-strong"></Flex>
-                    <Text>{item}</Text>
-                  </Flex>
-                ))}
-              </>
-            )}
           </Column>
         ))}
     </Column>

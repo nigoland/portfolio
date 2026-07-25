@@ -19,6 +19,9 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+  timeframe?: string;
+  teamSize?: string;
+  scope?: string;
 };
 
 import { notFound } from "next/navigation";
@@ -49,6 +52,9 @@ function readMDXFile(filePath: string) {
     tag: data.tag || [],
     team: data.team || [],
     link: data.link || "",
+    timeframe: data.timeframe || "",
+    teamSize: data.teamSize || "",
+    scope: data.scope || "",
   };
 
   return { metadata, content };

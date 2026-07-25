@@ -17,7 +17,7 @@ import {
 } from "@once-ui-system/core";
 import { baseURL, about, person, work } from "@/resources";
 import { formatDate } from "@/utils/formatDate";
-import { ScrollToHash, CustomMDX } from "@/components";
+import { ScrollToHash, CustomMDX, Lede } from "@/components";
 import { Metadata } from "next";
 import { Projects } from "@/components/work/Projects";
 
@@ -99,9 +99,10 @@ export default async function Project({
         <Text variant="body-default-xs" onBackground="neutral-weak" marginBottom="12">
           {post.metadata.publishedAt && formatDate(post.metadata.publishedAt)}
         </Text>
-        <Heading variant="display-strong-m">{post.metadata.title}</Heading>
+        <Heading variant="display-strong-l">{post.metadata.title}</Heading>
+        {post.metadata.summary && <Lede>{post.metadata.summary}</Lede>}
       </Column>
-      <Row marginBottom="32" horizontal="center">
+      <Row marginBottom="8" horizontal="center">
         <Row gap="16" vertical="center">
           {post.metadata.team && <AvatarGroup reverse avatars={avatars} size="s" />}
           <Text variant="label-default-m" onBackground="brand-weak">
@@ -118,10 +119,38 @@ export default async function Project({
           </Text>
         </Row>
       </Row>
-      {post.metadata.images.length > 0 && (
-        <Media priority aspectRatio="16 / 9" radius="m" alt="image" src={post.metadata.images[0]} />
+      {(post.metadata.team?.[0]?.role || post.metadata.timeframe || post.metadata.teamSize || post.metadata.scope) && (
+        <div className="cs-meta-row" style={{ width: "100%" }}>
+          {post.metadata.team?.[0]?.role && (
+            <div className="cs-meta-item">
+              <span className="cs-meta-label">Role</span>
+              <span className="cs-meta-value">{post.metadata.team[0].role}</span>
+            </div>
+          )}
+          {post.metadata.timeframe && (
+            <div className="cs-meta-item">
+              <span className="cs-meta-label">Timeframe</span>
+              <span className="cs-meta-value">{post.metadata.timeframe}</span>
+            </div>
+          )}
+          {post.metadata.teamSize && (
+            <div className="cs-meta-item">
+              <span className="cs-meta-label">Team</span>
+              <span className="cs-meta-value">{post.metadata.teamSize}</span>
+            </div>
+          )}
+          {post.metadata.scope && (
+            <div className="cs-meta-item">
+              <span className="cs-meta-label">Scope</span>
+              <span className="cs-meta-value">{post.metadata.scope}</span>
+            </div>
+          )}
+        </div>
       )}
-      <Column style={{ margin: "auto" }} as="article" maxWidth="xs">
+      {post.metadata.images.length > 0 && (
+        <Media priority aspectRatio="16 / 9" radius="l" alt="image" src={post.metadata.images[0]} />
+      )}
+      <Column className="cs-article" style={{ margin: "auto" }} as="article" maxWidth="s">
         <CustomMDX source={post.content} />
       </Column>
       <Column fillWidth gap="40" horizontal="center" marginTop="40">
