@@ -1,0 +1,14 @@
+// Shared design tokens for the Nigoland homepage brand system.
+// Ground = dark jade surfaces (cream body text, gold labels).
+// Panel  = cream surfaces (charcoal body text, jade headings). Gold stays constant.
+$jade-frame: #113229;
+$jade-dark: #163527;
+$jade: #1f4a38;
+$jade-footer: #00241a;
+$cream: #f3ecd8;
+$charcoal: #2a2620;
+$gold: #d5a858;
+
+$font-cinzel: var(--font-cinzel), "Cinzel", serif;
+$font-cormorant: var(--font-cormorant), "Cormorant Garamond", serif;
+$font-inter: var(--font-nigoland-inter), "Inter", sans-serif;

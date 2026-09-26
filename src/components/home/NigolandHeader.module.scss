@@ -1,0 +1,57 @@
+@use "../breakpoints.scss" as breakpoints;
+@use "./_tokens.scss" as tokens;
+
+.header {
+  position: relative;
+  z-index: 9;
+  width: 100%;
+  overflow: hidden;
+  background: tokens.$jade-dark;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 48px;
+
+  @media (max-width: breakpoints.$s) {
+    padding: 16px 16px;
+  }
+}
+
+.pill {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  border-radius: 60px;
+  background: tokens.$jade-frame;
+  padding: 14px 32px;
+  white-space: nowrap;
+
+  @media (max-width: breakpoints.$s) {
+    gap: 14px;
+    padding: 10px 16px;
+  }
+}
+
+.pill .navLink {
+  font-family: tokens.$font-cormorant;
+  font-size: 18px;
+  line-height: 1.2;
+  letter-spacing: 0.18em;
+  color: tokens.$gold;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  @media (max-width: breakpoints.$s) {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+}

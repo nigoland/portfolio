@@ -1,9 +1,18 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { Row, IconButton, SmartLink, Text } from "@once-ui-system/core";
 import { person, social } from "@/resources";
+import { NigolandFooter } from "./home/NigolandFooter";
 import styles from "./Footer.module.scss";
 
 export const Footer = () => {
+  const pathname = usePathname() ?? "";
   const currentYear = new Date().getFullYear();
+
+  if (pathname === "/") {
+    return <NigolandFooter />;
+  }
 
   return (
     <Row as="footer" fillWidth padding="8" horizontal="center" s={{ direction: "column" }}>

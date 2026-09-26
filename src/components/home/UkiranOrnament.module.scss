@@ -1,0 +1,42 @@
+@use "../breakpoints.scss" as breakpoints;
+
+.row {
+  position: absolute;
+  left: 0;
+  right: 0;
+  display: none;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 0;
+  pointer-events: none;
+
+  @media (min-width: #{breakpoints.$m + 1px}) {
+    display: flex;
+  }
+}
+
+.image {
+  height: 254px;
+  width: 400px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.seamImage {
+  height: 260px;
+  width: 400px;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.flipX {
+  transform: scaleX(-1);
+}
+
+.flipY {
+  transform: scaleY(-1);
+}
+
+.flipXY {
+  transform: scale(-1, -1);
+}

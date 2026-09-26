@@ -97,8 +97,10 @@ export interface Home extends BasePageConfig {
    * The image needs to be put inside `/public/images/` directory
    */
   image: `/images/${string}` | string;
+  /** Small label shown above the logo lockup in the hero, e.g. "Welcome to" */
+  eyebrow?: React.ReactNode;
   /** The headline of the home page */
-  headline: React.ReactNode;
+  headline?: React.ReactNode;
   /** Featured badge, which appears above the headline */
   featured: {
     display: boolean;
@@ -106,7 +108,9 @@ export interface Home extends BasePageConfig {
     href: string;
   };
   /** The sub text which appears below the headline */
-  subline: React.ReactNode;
+  subline?: React.ReactNode;
+  /** Career story, told as separate paragraphs, shown inside the hero panel */
+  story?: string[];
 }
 
 /**
@@ -218,6 +222,86 @@ export interface About extends BasePageConfig {
     }>;
   };
 }
+
+/**
+ * Brands/clients featured on the home page, grouped by the career phase they belong to
+ * (e.g. Product Design, Marketing, Advertising).
+ */
+export type Brands = Array<{
+  /** Career phase or discipline this group of brands belongs to */
+  category: string;
+  /** One-line summary of the work done in this category */
+  description: React.ReactNode;
+  /** Brands/clients within this category */
+  items: Array<{
+    /** Brand/client name, used as alt text and fallback label */
+    name: string;
+    /** Path to the brand's logo, inside `/public/images/` */
+    logo: string;
+  }>;
+}>;
+
+/**
+ * "Get in touch" modal configuration, triggered from the nav's "Send message" action,
+ * and reused by the home page's closing "Let's connect" section.
+ */
+export type Connect = {
+  /** Small label above the title, e.g. "Let's connect" */
+  eyebrow: string;
+  /** Modal title, e.g. "Get in touch" */
+  title: string;
+  /** Supporting copy shown below the contact options */
+  description: React.ReactNode;
+  /** Email address, used for the mailto: link */
+  email: string;
+  /** LinkedIn contact option */
+  linkedin: {
+    /** Value line shown in the modal, e.g. "Connect with Dedi" */
+    label: string;
+    /** LinkedIn profile URL */
+    link: string;
+  };
+  /** Resume/CV download link */
+  resume: {
+    label: string;
+    link: string;
+  };
+  /** Roles/arrangements Dedi is currently open to, shown on the home page */
+  openTo: string[];
+};
+
+/**
+ * "Experience across industries and countries" section on the home page: an intro
+ * followed by the categorized brand/client groups.
+ */
+export type ExperienceSection = {
+  /** Section title, e.g. "Experience across industries and countries" */
+  title: string;
+  /** Supporting line under the title */
+  subtitle: string;
+  /** Categorized brand/client groups */
+  groups: Brands;
+};
+
+/**
+ * "Core expertise" section on the home page: skill categories, each backed by a short
+ * capability statement and a set of scannable keyword tags.
+ */
+export type Expertise = {
+  /** Section title, e.g. "Core expertise of Dedi" */
+  title: string;
+  /** Supporting line under the title */
+  subtitle: string;
+  /** Skill categories, each rendered as its own card */
+  categories: Array<{
+    /** Category name, e.g. "Product Strategy" */
+    title: string;
+    /** One capability statement: what Dedi does, not a project retelling */
+    description: React.ReactNode;
+    /** Scannable keyword tags for this category */
+    tags: string[];
+  }>;
+};
 
 /**
  * Blog page configuration.

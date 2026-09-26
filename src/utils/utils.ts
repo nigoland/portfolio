@@ -11,9 +11,15 @@ type Team = {
 
 type Metadata = {
   title: string;
+  /** Short display title used on compact cards (e.g. the home page project tickets) */
+  shortTitle?: string;
+  /** Year label shown on compact cards, e.g. "2026" (independent of publishedAt) */
+  caseStudyYear?: string;
   subtitle?: string;
   publishedAt: string;
   summary: string;
+  /** Shorter blurb for compact cards (e.g. the home page project tickets); falls back to summary */
+  ticketSummary?: string;
   image?: string;
   images: string[];
   tag?: string;
@@ -44,9 +50,12 @@ function readMDXFile(filePath: string) {
 
   const metadata: Metadata = {
     title: data.title || "",
+    shortTitle: data.shortTitle || "",
+    caseStudyYear: data.caseStudyYear || "",
     subtitle: data.subtitle || "",
     publishedAt: data.publishedAt,
     summary: data.summary || "",
+    ticketSummary: data.ticketSummary || "",
     image: data.image || "",
     images: data.images || [],
     tag: data.tag || [],

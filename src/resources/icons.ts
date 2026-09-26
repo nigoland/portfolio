@@ -17,6 +17,7 @@ import {
   PiFileTextDuotone,
   PiRocketLaunchDuotone,
   PiArrowSquareOutDuotone,
+  PiXDuotone,
 } from "react-icons/pi";
 
 import {
@@ -53,6 +54,7 @@ export const iconLibrary: Record<string, IconType> = {
   arrowUpRightFromSquare: PiArrowSquareOutDuotone,
   document: PiFileTextDuotone,
   rocket: PiRocketLaunchDuotone,
+  close: PiXDuotone,
   javascript: SiJavascript,
   nextjs: SiNextdotjs,
   supabase: SiSupabase,

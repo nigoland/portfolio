@@ -7,6 +7,8 @@ import { Fade, Flex, Line, Row, ToggleButton } from "@once-ui-system/core";
 
 import { routes, display, person, about, blog, work, gallery } from "@/resources";
 import { ThemeToggle } from "./ThemeToggle";
+import { ConnectModal } from "./ConnectModal";
+import { NigolandHeader } from "./home/NigolandHeader";
 import styles from "./Header.module.scss";
 
 type TimeDisplayProps = {
@@ -49,9 +51,15 @@ export const Header = () => {
   const isWork = pathname.startsWith("/work");
   const isBlog = pathname.startsWith("/blog");
   const isGallery = pathname.startsWith("/gallery");
+  const [isConnectOpen, setIsConnectOpen] = useState(false);
+
+  if (isHome) {
+    return <NigolandHeader />;
+  }
 
   return (
     <>
+      <ConnectModal isOpen={isConnectOpen} onClose={() => setIsConnectOpen(false)} />
       <Fade s={{ hide: true }} fillWidth position="fixed" height="80" zIndex={9} />
       <Fade
         hide
@@ -104,27 +112,6 @@ export const Header = () => {
                 />
               )}
               <Line background="neutral-alpha-medium" vert maxHeight="24" />
-              {routes["/about"] && (
-                <>
-                  <Row s={{ hide: true }}>
-                    <ToggleButton
-                      prefixIcon="person"
-                      href="/about"
-                      label={about.label}
-                      selected={isAbout}
-                      className={isAbout ? "cs-nav-active" : undefined}
-                    />
-                  </Row>
-                  <Row hide s={{ hide: false }}>
-                    <ToggleButton
-                      prefixIcon="person"
-                      href="/about"
-                      selected={isAbout}
-                      className={isAbout ? "cs-nav-active" : undefined}
-                    />
-                  </Row>
-                </>
-              )}
               {routes["/work"] && (
                 <>
                   <Row s={{ hide: true }}>
@@ -142,6 +129,27 @@ export const Header = () => {
                       href="/work"
                       selected={isWork}
                       className={isWork ? "cs-nav-active" : undefined}
+                    />
+                  </Row>
+                </>
+              )}
+              {routes["/about"] && (
+                <>
+                  <Row s={{ hide: true }}>
+                    <ToggleButton
+                      prefixIcon="person"
+                      href="/about"
+                      label={about.label}
+                      selected={isAbout}
+                      className={isAbout ? "cs-nav-active" : undefined}
+                    />
+                  </Row>
+                  <Row hide s={{ hide: false }}>
+                    <ToggleButton
+                      prefixIcon="person"
+                      href="/about"
+                      selected={isAbout}
+                      className={isAbout ? "cs-nav-active" : undefined}
                     />
                   </Row>
                 </>
@@ -188,6 +196,17 @@ export const Header = () => {
                   </Row>
                 </>
               )}
+              <Line background="neutral-alpha-medium" vert maxHeight="24" />
+              <Row s={{ hide: true }}>
+                <ToggleButton
+                  prefixIcon="email"
+                  label="Send message"
+                  onClick={() => setIsConnectOpen(true)}
+                />
+              </Row>
+              <Row hide s={{ hide: false }}>
+                <ToggleButton prefixIcon="email" onClick={() => setIsConnectOpen(true)} />
+              </Row>
               {display.themeSwitcher && (
                 <>
                   <Line background="neutral-alpha-medium" vert maxHeight="24" />

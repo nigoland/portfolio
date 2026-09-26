@@ -289,7 +289,7 @@
 }
 
 /* Every SmartLink (project links, back-links, footer credit) shares this
-   reset class — one rule gives every text link a consistent accent hover
+   reset class. One rule gives every text link a consistent accent hover
    sitewide instead of leaving links colorless. */
 .reset-button-styles:hover,
 .reset-button-styles:focus-visible {

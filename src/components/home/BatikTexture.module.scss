@@ -1,0 +1,9 @@
+.texture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image: url("/images/nigoland/texture-tile.svg");
+  background-repeat: repeat;
+  background-size: 56px 80px;
+}
